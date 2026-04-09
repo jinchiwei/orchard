@@ -8,7 +8,7 @@ Collection of Apple desktop widgets for [Ubersicht](https://tracesof.net/uebersi
 
 - **CalendarWeather** - Calendar grid, upcoming events, and weather forecast
 - **ResearchLog** - Live activity feed from a research-log git repo, grouped by project/experiment
-- **Playbox** - Now playing widget for Apple Music
+- **Playbox** - Now playing widget for Spotify and YouTube tabs
 - **Thinkpad** - Deconstructed ThinkPad system monitor (Conky-style)
 
 ## Branding
