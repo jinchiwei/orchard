@@ -2,7 +2,7 @@
 
 Collection of Apple desktop widgets for [Ubersicht](https://tracesof.net/uebersicht/).
 
-![desktop](desktop.png)
+![desktop](desktop.png?v=2)
 
 ## Widgets
 
