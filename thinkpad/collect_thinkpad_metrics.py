@@ -18,7 +18,7 @@ STATE_PATH = Path("/tmp/ubersicht-thinkpad-state.json")
 STATIC_TTL_SECONDS = 6 * 60 * 60
 UPDATE_TTL_SECONDS = 60 * 60
 NETWORK_HISTORY_POINTS = 36
-DEFAULT_IMAGE_PATH = "/Users/jinchiwei/arcadia/customization/thinkpad/thinkpad deconstructed.deeppink-warmer-mid.png"
+DEFAULT_IMAGE_PATH = "/Users/jinchiwei/arcadia/orchard/thinkpad/thinkpad deconstructed.deeppink-warmer-mid.png"
 
 
 def run_command(command: list[str] | str, timeout: float = 1.5) -> str:

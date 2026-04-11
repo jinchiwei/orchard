@@ -14,14 +14,14 @@ This folder now contains an Ubersicht version of the original Conky theme.
 Symlink the whole folder into your Ubersicht widgets directory so the widget can keep using its local image asset:
 
 ```bash
-ln -s /Users/jinchiwei/arcadia/customization/thinkpad \
+ln -s /Users/jinchiwei/arcadia/orchard/thinkpad \
   "$HOME/Library/Application Support/Übersicht/widgets/thinkpad"
 ```
 
 If your system uses the non-combining spelling for the app support folder, use this instead:
 
 ```bash
-ln -s /Users/jinchiwei/arcadia/customization/thinkpad \
+ln -s /Users/jinchiwei/arcadia/orchard/thinkpad \
   "$HOME/Library/Application Support/Übersicht/widgets/thinkpad"
 ```
 

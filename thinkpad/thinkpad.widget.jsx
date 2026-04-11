@@ -28,8 +28,8 @@ const themes = {
 const activeTheme = themes.turquoise;
 
 const images = {
-  pink: '/Users/jinchiwei/arcadia/customization/thinkpad/thinkpad deconstructed.deeppink-warmer-mid.cropped.png',
-  turquoise: '/Users/jinchiwei/arcadia/customization/thinkpad/thinkpad deconstructed.turquoise.cropped.png',
+  pink: '/Users/jinchiwei/arcadia/orchard/thinkpad/thinkpad deconstructed.deeppink-warmer-mid.cropped.png',
+  turquoise: '/Users/jinchiwei/arcadia/orchard/thinkpad/thinkpad deconstructed.turquoise.cropped.png',
 };
 
 const config = {
@@ -45,7 +45,7 @@ const config = {
   shadowBaseColor: '#450045',
 };
 
-const collectorPath = '/Users/jinchiwei/arcadia/customization/thinkpad/collect_thinkpad_metrics.py';
+const collectorPath = '/Users/jinchiwei/arcadia/orchard/thinkpad/collect_thinkpad_metrics.py';
 
 export const refreshFrequency = 2000;
 export const command = `THINKPAD_IMAGE_PATH="${config.imagePath}" python3 "${collectorPath}"`;

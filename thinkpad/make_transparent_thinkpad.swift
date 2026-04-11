@@ -1,8 +1,8 @@
 import AppKit
 import Foundation
 
-let inputPath = "/Users/jinchiwei/arcadia/customization/thinkpad/thinkpad deconstructed.png"
-let defaultOutputPath = "/Users/jinchiwei/arcadia/customization/thinkpad/thinkpad deconstructed.transparent.png"
+let inputPath = "/Users/jinchiwei/arcadia/orchard/thinkpad/thinkpad deconstructed.png"
+let defaultOutputPath = "/Users/jinchiwei/arcadia/orchard/thinkpad/thinkpad deconstructed.transparent.png"
 
 let logoRect = CGRect(x: 1350, y: 740, width: 250, height: 160)
 
