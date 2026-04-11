@@ -189,7 +189,7 @@ const styles = `
     width: 1280px;
     height: 860px;
     margin: 0 auto;
-    left: 338px;
+    left: 328px;
     top: 20px;
     transform: scale(var(--scale));
     transform-origin: top center;

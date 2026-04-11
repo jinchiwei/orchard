@@ -153,6 +153,8 @@ const glow = [
 const styles = {
   wrapper: {
     pointerEvents: "none",
+    position: "relative",
+    height: "385px",
   },
   container: {
     position: "relative",
@@ -228,6 +230,7 @@ const styles = {
   // Floating sections (events + weather)
   floatingSection: {
     padding: "10px 14px 0",
+    minHeight: "160px",
   },
   noEvents: {
     fontSize: "11px",
@@ -262,6 +265,10 @@ const styles = {
 
   // Weather - floating with glow
   weatherSection: {
+    position: "absolute",
+    bottom: "2px",
+    left: "0",
+    right: "0",
     padding: "2px 14px 0",
     display: "flex",
     justifyContent: "space-between",
