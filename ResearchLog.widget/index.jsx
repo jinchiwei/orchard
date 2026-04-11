@@ -19,7 +19,7 @@ export const updateState = (event, previousState) => {
 
 export const className = `
   left: 25px;
-  top: 10px;
+  top: 15px;
   width: 560px;
   max-height: 960px;
   pointer-events: none;
@@ -124,7 +124,7 @@ const styles = {
     color: "rgba(255, 255, 255, 0.7)",
     letterSpacing: "0.5px",
     textTransform: "uppercase",
-    marginBottom: "14px",
+    marginBottom: "6px",
     textShadow: glow,
   },
   empty: {

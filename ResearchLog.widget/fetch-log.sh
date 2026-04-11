@@ -50,6 +50,16 @@ def get_time(filepath):
     except:
         return 'unknown'
 
+def get_timestamp(filepath):
+    try:
+        r = subprocess.run(
+            ['git', 'log', '-1', '--format=%ct', '--', filepath],
+            capture_output=True, text=True, timeout=5, cwd=repo
+        )
+        return int(r.stdout.strip()) if r.stdout.strip() else 0
+    except:
+        return 0
+
 project_order = ['brainlab', 'wolong', 'curiedx', 'papers', 'musegen', 'musidia']
 all_dirs = [d for d in os.listdir(repo) if os.path.isdir(os.path.join(repo, d)) and not d.startswith('.')]
 all_dirs.sort(key=lambda d: project_order.index(d) if d in project_order else len(project_order))
@@ -60,7 +70,7 @@ for project in all_dirs:
         continue
 
     experiments = []
-    for exp in sorted(os.listdir(ppath)):
+    for exp in os.listdir(ppath):
         epath = os.path.join(ppath, exp)
         if not os.path.isdir(epath) or exp.startswith('.'):
             continue
@@ -73,6 +83,7 @@ for project in all_dirs:
         latest = md_files[0]
         blurb = get_blurb(latest)
         time = get_time(latest)
+        ts = get_timestamp(latest)
 
         if blurb:
             # Parse structured blurb: metric | result | next
@@ -81,6 +92,7 @@ for project in all_dirs:
                 entry = {
                     'name': exp,
                     'time': time,
+                    'ts': ts,
                     'metric': parts[0],
                     'result': parts[1],
                     'next': parts[2],
@@ -89,6 +101,7 @@ for project in all_dirs:
                 entry = {
                     'name': exp,
                     'time': time,
+                    'ts': ts,
                     'metric': '',
                     'result': blurb,
                     'next': '',
@@ -96,6 +109,7 @@ for project in all_dirs:
             experiments.append(entry)
 
     if experiments:
+        experiments.sort(key=lambda e: e.get('ts', 0), reverse=True)
         projects.append({'name': project, 'experiments': experiments})
 
 print(json.dumps({'projects': projects}))
