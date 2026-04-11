@@ -25,7 +25,7 @@ fi
 
 # Get calendar events via icalBuddy (handles recurring events properly)
 # Excludes holiday/birthday calendars; cannot see Siri Suggestions
-/opt/homebrew/bin/icalBuddy -f -nc -nrd -npn -b "" -iep "title,datetime" -po "title,datetime" -df "|||%a %m/%d" -tf "%I:%M%p" -eed -ec "Birthdays,Reminders" eventsFrom:today to:"today+7" 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | sed 's/^[[:space:]]*//' | awk '/^\|\|\|/{printf "%s\n", prev $0; prev=""; next} {if(prev!="") print prev; prev=$0} END{if(prev!="") print prev}' > "$EVENTS_FILE"
+/opt/homebrew/bin/icalBuddy -f -nc -nrd -npn -b "" -iep "title,datetime" -po "title,datetime" -df "|||%a %m/%d" -tf "%I:%M%p" -eed -ec "Birthdays,Reminders" eventsFrom:today to:"today+7" 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | sed 's/^[[:space:]]*//' | awk '/^\|\|\|/{printf "%s\n", prev $0; prev=""; next} {if(prev!="") print prev; prev=$0} END{if(prev!="") print prev}' > "$EVENTS_FILE" || true
 
 # Get Siri Suggestions events via AppleScript (icalBuddy can't see these)
 osascript -e '
