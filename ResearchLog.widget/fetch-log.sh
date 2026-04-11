@@ -7,7 +7,7 @@ REPO="$HOME/arcadia/research-log"
 cd "$REPO" 2>/dev/null || { echo '{"projects":[]}'; exit 0; }
 
 git fetch --quiet 2>/dev/null
-git pull --rebase --quiet 2>/dev/null
+git pull --rebase --autostash --quiet 2>/dev/null
 
 python3 -c "
 import json, os, re, subprocess, glob
