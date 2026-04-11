@@ -20,14 +20,26 @@ export const initialState = {
 export const updateState = (event, previousState) => {
   if (event.error || !event.output) return { ...previousState, state: "closed", pausedSince: 0 };
   try {
-    const data = JSON.parse(event.output.trim());
+    const raw = JSON.parse(event.output.trim());
     const now = Date.now();
-    // Track when pause started
+
+    // When both sources are paused, pick the one that was last playing
+    if (raw.both) {
+      const lastSource = previousState.lastPlayedSource || "spotify";
+      const pick = raw.both.find((d) => d.source === lastSource) || raw.both[0];
+      const pausedSince = previousState.pausedSince || now;
+      return { ...previousState, ...pick, pausedSince };
+    }
+
+    const data = raw;
+    // Remember which source was last actively playing
+    const lastPlayedSource = data.state === "playing" ? data.source : (previousState.lastPlayedSource || data.source);
+
     if (data.state === "paused") {
       const pausedSince = previousState.pausedSince || now;
-      return { ...previousState, ...data, pausedSince };
+      return { ...previousState, ...data, pausedSince, lastPlayedSource };
     }
-    return { ...previousState, ...data, pausedSince: 0 };
+    return { ...previousState, ...data, pausedSince: 0, lastPlayedSource };
   } catch {
     return { ...previousState, state: "closed", pausedSince: 0 };
   }
