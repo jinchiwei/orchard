@@ -19,7 +19,7 @@ export const updateState = (event, previousState) => {
 
 export const className = `
   left: 25px;
-  top: 25px;
+  top: 10px;
   width: 560px;
   max-height: 960px;
   pointer-events: none;
