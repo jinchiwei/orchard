@@ -124,7 +124,7 @@ const styles = {
     color: "rgba(255, 255, 255, 0.7)",
     letterSpacing: "0.5px",
     textTransform: "uppercase",
-    marginBottom: "6px",
+    marginBottom: "12px",
     textShadow: glow,
   },
   empty: {
@@ -137,7 +137,7 @@ const styles = {
   projects: {
     display: "flex",
     flexDirection: "column",
-    gap: "14px",
+    gap: "12px",
   },
   project: {
     display: "flex",
