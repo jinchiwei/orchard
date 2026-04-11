@@ -14,7 +14,12 @@ export const initialState = {
 export const updateState = (event, previousState) => {
   if (event.error || !event.output) return previousState;
   try {
-    return JSON.parse(event.output.trim());
+    const data = JSON.parse(event.output.trim());
+    // Keep previous weather if new data is all zeros (failed fetch)
+    if (data.weather && data.weather.temp === 0 && data.weather.high === 0 && data.weather.low === 0 && previousState.weather && previousState.weather.temp !== 0) {
+      data.weather = previousState.weather;
+    }
+    return data;
   } catch {
     return previousState;
   }
