@@ -2,10 +2,10 @@
 # CalendarWeather: Fetch calendar grid, upcoming events, and weather
 # Output: JSON
 
-TMPDIR="${TMPDIR:-/tmp}"
-WEATHER_FILE="$TMPDIR/cw_weather.json"
-EVENTS_FILE="$TMPDIR/cw_events.txt"
-EVENTS_AS_FILE="$TMPDIR/cw_events_as.txt"
+CW_TMP="/tmp"
+WEATHER_FILE="$CW_TMP/cw_weather.json"
+EVENTS_FILE="$CW_TMP/cw_events.txt"
+EVENTS_AS_FILE="$CW_TMP/cw_events_as.txt"
 
 # Get weather (only re-fetch if cache is >15 min old or missing)
 WEATHER_TMP="$TMPDIR/cw_weather_tmp.json"
