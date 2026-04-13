@@ -113,6 +113,8 @@ try:
         parts = line.split('|||')
         if len(parts) >= 2:
             name = parts[0].strip()
+            if name.lower().startswith('canceled:') or name.lower().startswith('cancelled:'):
+                continue
             dt = parts[1].strip()
             if ' at ' in dt:
                 date_part, time_part = dt.rsplit(' at ', 1)
@@ -147,6 +149,8 @@ try:
         parts = line.split('|||')
         if len(parts) >= 3:
             name = parts[0].strip()
+            if name.lower().startswith('canceled:') or name.lower().startswith('cancelled:'):
+                continue
             date_part = parts[1].strip()
             t = parts[2].strip()
             try:
