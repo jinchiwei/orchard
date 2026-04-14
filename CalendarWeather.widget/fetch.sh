@@ -7,12 +7,16 @@ WEATHER_FILE="$CW_TMP/cw_weather.json"
 EVENTS_FILE="$CW_TMP/cw_events.txt"
 EVENTS_AS_FILE="$CW_TMP/cw_events_as.txt"
 
-# Get weather (only re-fetch if cache is >15 min old or missing)
-WEATHER_TMP="$TMPDIR/cw_weather_tmp.json"
+# Get weather (only re-fetch if cache is >15 min old, missing, or corrupt)
+WEATHER_TMP="$CW_TMP/cw_weather_tmp.json"
 NEED_FETCH=1
 if [ -f "$WEATHER_FILE" ]; then
-  AGE=$(( $(date +%s) - $(stat -f %m "$WEATHER_FILE") ))
-  [ "$AGE" -lt 900 ] && NEED_FETCH=0
+  if python3 -c "import json; json.load(open('$WEATHER_FILE'))['current']" 2>/dev/null; then
+    AGE=$(( $(date +%s) - $(stat -f %m "$WEATHER_FILE") ))
+    [ "$AGE" -lt 900 ] && NEED_FETCH=0
+  else
+    rm -f "$WEATHER_FILE"
+  fi
 fi
 if [ "$NEED_FETCH" -eq 1 ]; then
   curl -s --max-time 10 "https://api.open-meteo.com/v1/forecast?latitude=37.77&longitude=-122.39&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America/Los_Angeles&forecast_days=1" > "$WEATHER_TMP" 2>/dev/null
