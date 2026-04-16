@@ -76,11 +76,20 @@ for project in all_dirs:
             continue
 
         # Find all .md files in this experiment (including subdirs)
-        md_files = sorted(glob.glob(os.path.join(epath, '**', '*.md'), recursive=True), reverse=True)
+        md_files = glob.glob(os.path.join(epath, '**', '*.md'), recursive=True)
         if not md_files:
             continue
 
-        latest = md_files[0]
+        # Pick the most recently committed file (fall back to mtime for uncommitted files)
+        def _recency(f):
+            t = get_timestamp(f)
+            if t:
+                return t
+            try:
+                return int(os.path.getmtime(f))
+            except OSError:
+                return 0
+        latest = max(md_files, key=_recency)
         blurb = get_blurb(latest)
         time = get_time(latest)
         ts = get_timestamp(latest)
