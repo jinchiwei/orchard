@@ -29,9 +29,17 @@ fi
 
 # Get calendar events via icalBuddy (handles recurring events properly)
 # Excludes holiday/birthday calendars; cannot see Siri Suggestions
-/opt/homebrew/bin/icalBuddy -f -nc -nrd -npn -b "" -iep "title,datetime" -po "title,datetime" -df "|||%a %m/%d" -tf "%I:%M%p" -eed -ec "Birthdays,Reminders" eventsFrom:today to:"today+7" 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | sed 's/^[[:space:]]*//' | awk '/^\|\|\|/{printf "%s\n", prev $0; prev=""; next} {if(prev!="") print prev; prev=$0} END{if(prev!="") print prev}' > "$EVENTS_FILE" || true
+# Only overwrite the cache if icalBuddy produced output, so a TCC denial doesn't wipe it
+EVENTS_TMP="$CW_TMP/cw_events_tmp.txt"
+/opt/homebrew/bin/icalBuddy -f -nc -nrd -npn -b "" -iep "title,datetime" -po "title,datetime" -df "|||%a %m/%d" -tf "%I:%M%p" -eed -ec "Birthdays,Reminders" eventsFrom:today to:"today+7" 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | sed 's/^[[:space:]]*//' | awk '/^\|\|\|/{printf "%s\n", prev $0; prev=""; next} {if(prev!="") print prev; prev=$0} END{if(prev!="") print prev}' > "$EVENTS_TMP" || true
+if [ -s "$EVENTS_TMP" ]; then
+    mv "$EVENTS_TMP" "$EVENTS_FILE"
+else
+    rm -f "$EVENTS_TMP"
+fi
 
 # Get Siri Suggestions events via AppleScript (icalBuddy can't see these)
+EVENTS_AS_TMP="$CW_TMP/cw_events_as_tmp.txt"
 osascript -e '
 tell application "Calendar"
     set today to current date
@@ -75,7 +83,12 @@ tell application "Calendar"
     end try
     return output
 end tell
-' > "$EVENTS_AS_FILE" 2>/dev/null
+' > "$EVENTS_AS_TMP" 2>/dev/null
+if [ -s "$EVENTS_AS_TMP" ]; then
+    mv "$EVENTS_AS_TMP" "$EVENTS_AS_FILE"
+else
+    rm -f "$EVENTS_AS_TMP"
+fi
 
 python3 -c "
 import json, calendar, datetime
