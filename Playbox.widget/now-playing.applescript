@@ -82,7 +82,7 @@ r.join(\"|\");
 							artwork: thumb,
 							duration: Math.round(v.duration * 1000),
 							position: v.currentTime,
-							state: v.paused ? 'paused' : 'playing',
+							state: (v.paused || v.currentTime < 0.5) ? 'paused' : 'playing',
 							source: 'youtube'
 						});
 					})();
