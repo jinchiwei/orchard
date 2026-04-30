@@ -177,13 +177,6 @@ const buildNetworkBottomLine = (data) => `< ${data.network.ip || 'no ip'} >`;
 const buildVolumeBlock = (data) => `volume: ${data.audio.label} -────────────`;
 
 const styles = `
-  @font-face {
-    font-family: 'ThinkpadGeistMonoBold';
-    src: url('file:///Users/jinchiwei/Library/Fonts/GeistMono-Bold.otf') format('opentype');
-    font-style: normal;
-    font-weight: 400;
-  }
-
   .thinkpad-root {
     position: relative;
     width: 1280px;
