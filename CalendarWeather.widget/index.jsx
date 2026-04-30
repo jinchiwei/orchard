@@ -54,11 +54,16 @@ const weatherEmoji = (code) => {
 
 export const render = ({ calendar: cal, events, weather }) => {
   // Build map of day number -> array of colors from events
+  // Only color events in the displayed month (the grid renders current month;
+  // a May event must not light up April's "1" cell).
+  const currentMonth = new Date().getMonth() + 1;
   const dayColorsMap = {};
   events.forEach((evt, i) => {
-    const match = (evt.date || "").match(/(\d+)$/);
+    const match = (evt.date || "").match(/(\d+)\/(\d+)$/);
     if (match) {
-      const dayNum = parseInt(match[1], 10);
+      const eventMonth = parseInt(match[1], 10);
+      const dayNum = parseInt(match[2], 10);
+      if (eventMonth !== currentMonth) return;
       if (!dayColorsMap[dayNum]) dayColorsMap[dayNum] = [];
       dayColorsMap[dayNum].push(eventColors[i % eventColors.length]);
     }
