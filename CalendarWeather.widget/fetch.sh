@@ -184,6 +184,21 @@ except:
     pass
 
 events.sort(key=lambda e: (e.get('sort', 0), e.get('time', '')))
+
+# Drop past events: parse 'Wed 04/29' style date_part, compare to today
+today_key = today.month * 100 + today.day
+def is_future(e):
+    sk = e.get('sort', 0)
+    # Wrap year boundary: if event sort_key is wildly less than today (>3 months back),
+    # assume it's next year and keep it
+    if sk == 0:
+        return True
+    if sk >= today_key:
+        return True
+    return (today_key - sk) > 900  # >9 months back -> next year
+
+events = [e for e in events if is_future(e)]
+
 # Strip sort key before output
 for e in events:
     e.pop('sort', None)
