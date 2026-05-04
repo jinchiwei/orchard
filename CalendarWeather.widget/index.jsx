@@ -1,5 +1,5 @@
 // CalendarWeather - Calendar grid, events, and weather for Übersicht
-// Uses Jin's branding: Geist/Geist Mono, turquoise/deeppink/amber.
+// Uses Jinchi's branding: Geist/Geist Mono, turquoise/deeppink/amber.
 
 export const command = `bash CalendarWeather.widget/fetch.sh`;
 

@@ -1,6 +1,6 @@
 // ResearchLog - Autoresearch activity feed for Übersicht
 // Scans research-log repo, groups by project/experiment, shows result blurbs.
-// Uses Jin's branding: Geist/Geist Mono, turquoise/deeppink/amber/blueviolet.
+// Uses Jinchi's branding: Geist/Geist Mono, turquoise/deeppink/amber/blueviolet.
 
 export const command = `bash ResearchLog.widget/fetch-log.sh`;
 

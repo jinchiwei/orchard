@@ -1,6 +1,6 @@
 // Playbox - Now Playing widget for Übersicht
 // Shows album art, track info, and progress bar with glassmorphism styling.
-// Supports Spotify and YouTube (via Chrome). Uses Jin's branding colors.
+// Supports Spotify and YouTube (via Chrome). Uses Jinchi's branding colors.
 
 export const command = `osascript Playbox.widget/now-playing.applescript`;
 
