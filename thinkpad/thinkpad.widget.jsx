@@ -187,7 +187,7 @@ const styles = `
     transform: scale(var(--scale));
     transform-origin: top center;
     color: var(--text);
-    font-family: 'GeistMono-Bold', 'Geist Mono Bold', 'ThinkpadGeistMonoBold', 'Geist Mono Regular', 'Geist Mono', 'SF Mono', 'IBM Plex Mono', 'JetBrains Mono', Menlo, monospace;
+    font-family: 'GeistMono-Bold', 'Geist Mono Bold', 'ThinkpadGeistMonoBold', 'Geist Mono Regular', 'Geist Mono', 'Noto Sans Mono CJK TC', 'Noto Sans CJK TC', 'SF Mono', 'IBM Plex Mono', 'JetBrains Mono', Menlo, monospace;
     font-weight: 400;
     font-variant-ligatures: none;
     text-transform: uppercase;
@@ -208,7 +208,7 @@ const styles = `
 
   .thinkpad-root,
   .thinkpad-root * {
-    font-family: 'GeistMono-Bold', 'Geist Mono Bold', 'ThinkpadGeistMonoBold', 'Geist Mono Regular', 'Geist Mono', 'SF Mono', 'IBM Plex Mono', 'JetBrains Mono', Menlo, monospace;
+    font-family: 'GeistMono-Bold', 'Geist Mono Bold', 'ThinkpadGeistMonoBold', 'Geist Mono Regular', 'Geist Mono', 'Noto Sans Mono CJK TC', 'Noto Sans CJK TC', 'SF Mono', 'IBM Plex Mono', 'JetBrains Mono', Menlo, monospace;
     font-variant-ligatures: none;
     pointer-events: none !important;
     -webkit-user-select: none;
