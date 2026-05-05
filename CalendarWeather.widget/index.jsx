@@ -185,7 +185,7 @@ const styles = {
   content: {
     position: "relative",
     zIndex: 1,
-    padding: "14px",
+    padding: "12px",
   },
 
   // Calendar grid
@@ -239,7 +239,7 @@ const styles = {
 
   // Floating sections (events + weather)
   floatingSection: {
-    padding: "10px 14px 0",
+    padding: "5px 12px 0",
     minHeight: "160px",
   },
   noEvents: {
